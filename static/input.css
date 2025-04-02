@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: NetflixSans;
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("/static/NetflixSans-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: NetflixSans;
+  font-style: normal;
+  font-weight: bold;
+  font-display: block;
+  src: url("/static/NetflixSans-Medium.woff2") format("woff2");
+}
+
+@theme {
+  --font-netflix: NetflixSans;
+  --color-red: #db0000;
+  --color-dark: #000000;
+  --color-white: #ffffff;
+  --color-gray: #564d4d;
+  --color-brown: #831010;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

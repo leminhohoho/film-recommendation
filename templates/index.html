@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+    <title>{{ title }}</title>
+</head>
+<body class="bg-dark font-netflix scroll-auto">
+    <div class="fixed flex z-50 w-screen p-6 bg-black/70 justify-between backdrop-blur-sm">
+        <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1200px-Netflix_2015_logo.svg.png"
+            width="120"
+        >
+        <img 
+            class="relative border border-black rounded-sm"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+            width="32.5"
+        >
+    </div>
+    <div class="z-10 fixed w-[calc(100%-48px)] h-1/2 m-6 mt-[90px] bg-blue-300 overflow-y-auto rounded-md"></div>
+    <div id="content" class="fixed z-20 w-screen h-screen overflow-y-auto">
+        <div class="h-1/2"></div>
+        <h1 class="relative ml-4 mb-4 text-gray-100 text-4xl font-bold drop-shadow-md">For you</h1>
+        <div id="for-you" class="flex overflow-x-scroll hide-scroll-bar mx-4">
+            <div class="flex gap-4"> 
+                {% for movie in movies %}
+                <div 
+                    style="background-image: url({{ movie.poster }})"
+                    class="movie flex items-center justify-center h-80 w-56 p-2 bg-cover inset-shadow-sm rounded-sm cursor-pointer transition-all duration-100 ease-in-out hover:[&>button]:opacity-100 hover:[&>button]:pointer-events-auto hover:brightness-90">
+                        <button class="relative text-gray-100 bg-red p-2 rounded-sm opacity-0 pointer-events-none transition-all duration-200 cursor-pointer hover:brightness-90 active:brightness-80">Watch</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='script.js' )}}"></script>
+</html>
+
