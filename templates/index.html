@@ -18,7 +18,6 @@
             width="32.5"
         >
     </div>
-    <div class="z-10 fixed w-[calc(100%-48px)] h-1/2 m-6 mt-[90px] bg-blue-300 overflow-y-auto rounded-md"></div>
     <div id="content" class="fixed z-20 w-screen h-screen overflow-y-auto">
         <div class="h-1/2"></div>
         <h1 class="relative ml-4 mb-4 text-gray-100 text-4xl font-bold drop-shadow-md">For you</h1>
@@ -27,8 +26,16 @@
                 {% for movie in movies %}
                 <div 
                     style="background-image: url({{ movie.poster }})"
-                    class="movie flex items-center justify-center h-80 w-56 p-2 bg-cover inset-shadow-sm rounded-sm cursor-pointer transition-all duration-100 ease-in-out hover:[&>button]:opacity-100 hover:[&>button]:pointer-events-auto hover:brightness-90">
-                        <button class="relative text-gray-100 bg-red p-2 rounded-sm opacity-0 pointer-events-none transition-all duration-200 cursor-pointer hover:brightness-90 active:brightness-80">Watch</button>
+                    class="movie flex items-center justify-center h-80 w-56 p-2 bg-cover inset-shadow-sm rounded-sm cursor-pointer transition-all duration-100 ease-in-out hover:[&>div]:opacity-100 hover:[&>div]:pointer-events-auto hover:brightness-70">
+                        <div
+                            class="relative flex gap-1 opacity-0"
+                        >
+                            <span class="hover:scale-125 cursor-pointer" onclick="fetch('/movies?movie={{ movie.movieIndex }}&rating=1')">⭐</span>
+                            <span class="hover:scale-125 cursor-pointer" onclick="fetch('/movies?movie={{ movie.movieIndex }}&rating=2')">⭐</span>
+                            <span class="hover:scale-125 cursor-pointer" onclick="fetch('/movies?movie={{ movie.movieIndex }}&rating=3')">⭐</span>
+                            <span class="hover:scale-125 cursor-pointer" onclick="fetch('/movies?movie={{ movie.movieIndex }}&rating=4')">⭐</span>
+                            <span class="hover:scale-125 cursor-pointer" onclick="fetch('/movies?movie={{ movie.movieIndex }}&rating=5')">⭐</span>
+                        </div>
                 </div>
                 {% endfor %}
             </div>
