@@ -14,12 +14,12 @@ def get_movies(user: list[int]):
 
         top_users = get_most_similar_users(user, userbase, 5)
 
-        for movie_index in range(0, len(user)):
-            if user[movie_index] == 0:
-                user_unwatched_movies[movie_index] = predict_value(
+        for movieIndex in range(0, len(user)):
+            if user[movieIndex] == 0:
+                user_unwatched_movies[movieIndex] = predict_value(
                     user,
                     top_users,
-                    movie_index,
+                    movieIndex,
                 )
 
     # List of movie indices sort based on the predicted values
@@ -39,12 +39,12 @@ def get_movies(user: list[int]):
         csvContent = data.split("\n")[1:]
         movies = []
 
-        for movie_index in movie_indices:
-            movie = csvContent[movie_index][1:-1]
+        for movieIndex in movie_indices:
+            movie = csvContent[movieIndex][1:-1]
             movieProperties = movie.split('","')
             movies.append(
                 {
-                    "movie_index": movie_index,
+                    "movieIndex": movieIndex,
                     "name": movieProperties[0],
                     "genre": movieProperties[1],
                     "trailer": movieProperties[2],
@@ -85,13 +85,13 @@ def get_most_similar_users(
     return most_similar_users
 
 
-def predict_value(u1: list[int], top_users: list[list[int]], movie_index: int) -> float:
+def predict_value(u1: list[int], top_users: list[list[int]], movieIndex: int) -> float:
     numerator = 0
     denominator = 0
 
     # Compute the predicting value from the selected users
     for u in top_users:
-        numerator += cosine_similarity(u1, u) * u[movie_index]
+        numerator += cosine_similarity(u1, u) * u[movieIndex]
         denominator += cosine_similarity(u1, u)
 
     if numerator == 0 and denominator == 0:
