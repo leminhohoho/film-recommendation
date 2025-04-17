@@ -14,7 +14,7 @@ A system for recommending film using linear regression and collaborative filteri
 We use cosine similarity to calculate the angle between 2 vector which in the context of film recommendation, the vector is a multi dimension vector consist of using rating for each movie (e.g [1,2,5,0])
 
 $$
-\text{cosine\_similarity}(\vec{A}, \vec{B}) = \frac{\sum\limits_{i=1}^{n} A_i B_i}{\sqrt{\sum\limits_{i=1}^{n} A_i^2} \sqrt{\sum\limits_{i=1}^{n} B_i^2}}
+\text{sim}(\vec{A}, \vec{B}) = \frac{\sum\limits_{i=1}^{n} A_i B_i}{\sqrt{\sum\limits_{i=1}^{n} A_i^2} \sqrt{\sum\limits_{i=1}^{n} B_i^2}}
 $$
 
 ### Predict rating
